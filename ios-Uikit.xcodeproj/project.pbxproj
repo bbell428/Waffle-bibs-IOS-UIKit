@@ -18,6 +18,7 @@
 
 /* Begin PBXFileReference section */
 		EA876EE22B0540BB00554794 /* Inter-VariableFont_slnt,wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-VariableFont_slnt,wght.ttf"; sourceTree = "<group>"; };
+		EABC47572B05427200AD9317 /* Photo */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Photo; sourceTree = "<group>"; };
 		EAD06C832B03481800F16B80 /* ios-Uikit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-Uikit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAD06C862B03481800F16B80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EAD06C882B03481800F16B80 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -42,6 +43,7 @@
 		EA091E4F2B053131002AD195 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				EABC47572B05427200AD9317 /* Photo */,
 				EA876EE22B0540BB00554794 /* Inter-VariableFont_slnt,wght.ttf */,
 			);
 			path = Resources;
