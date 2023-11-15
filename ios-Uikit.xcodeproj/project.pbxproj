@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EA99A6842B04BB97001BDB4F /* Inter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA99A6832B04BB97001BDB4F /* Inter-Bold.ttf */; };
 		EAD06C872B03481800F16B80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD06C862B03481800F16B80 /* AppDelegate.swift */; };
 		EAD06C892B03481800F16B80 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD06C882B03481800F16B80 /* SceneDelegate.swift */; };
 		EAD06C8B2B03481800F16B80 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD06C8A2B03481800F16B80 /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EA99A6832B04BB97001BDB4F /* Inter-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Inter-Bold.ttf"; path = "../../../Downloads/inter/static/Inter-Bold.ttf"; sourceTree = "<group>"; };
 		EAD06C832B03481800F16B80 /* ios-Uikit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-Uikit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAD06C862B03481800F16B80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EAD06C882B03481800F16B80 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				EAD06C8F2B03481A00F16B80 /* Assets.xcassets */,
 				EAD06C912B03481A00F16B80 /* LaunchScreen.storyboard */,
 				EAD06C942B03481A00F16B80 /* Info.plist */,
+				EA99A6832B04BB97001BDB4F /* Inter-Bold.ttf */,
 			);
 			path = "ios-Uikit";
 			sourceTree = "<group>";
@@ -127,6 +130,7 @@
 			files = (
 				EAD06C932B03481A00F16B80 /* LaunchScreen.storyboard in Resources */,
 				EAD06C902B03481A00F16B80 /* Assets.xcassets in Resources */,
+				EA99A6842B04BB97001BDB4F /* Inter-Bold.ttf in Resources */,
 				EAD06C8E2B03481800F16B80 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
