@@ -10,8 +10,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         
-        Label1.text = "Hi my name is"
-        
         for fontFamily in UIFont.familyNames {
                     for fontName in UIFont.fontNames(forFamilyName: fontFamily) {
                         print(fontName)
