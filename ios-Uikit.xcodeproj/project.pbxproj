@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EA99A6842B04BB97001BDB4F /* Inter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA99A6832B04BB97001BDB4F /* Inter-Bold.ttf */; };
+		EA876EE32B0540BB00554794 /* Inter-VariableFont_slnt,wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA876EE22B0540BB00554794 /* Inter-VariableFont_slnt,wght.ttf */; };
 		EAD06C872B03481800F16B80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD06C862B03481800F16B80 /* AppDelegate.swift */; };
 		EAD06C892B03481800F16B80 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD06C882B03481800F16B80 /* SceneDelegate.swift */; };
 		EAD06C8B2B03481800F16B80 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD06C8A2B03481800F16B80 /* ViewController.swift */; };
@@ -17,7 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		EA99A6832B04BB97001BDB4F /* Inter-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Inter-Bold.ttf"; path = "../../../Downloads/inter/static/Inter-Bold.ttf"; sourceTree = "<group>"; };
+		EA876EE22B0540BB00554794 /* Inter-VariableFont_slnt,wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-VariableFont_slnt,wght.ttf"; sourceTree = "<group>"; };
 		EAD06C832B03481800F16B80 /* ios-Uikit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-Uikit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAD06C862B03481800F16B80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EAD06C882B03481800F16B80 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +39,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EA091E4F2B053131002AD195 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EA876EE22B0540BB00554794 /* Inter-VariableFont_slnt,wght.ttf */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		EAD06C7A2B03481800F16B80 = {
 			isa = PBXGroup;
 			children = (
@@ -58,6 +66,7 @@
 		EAD06C852B03481800F16B80 /* ios-Uikit */ = {
 			isa = PBXGroup;
 			children = (
+				EA091E4F2B053131002AD195 /* Resources */,
 				EAD06C862B03481800F16B80 /* AppDelegate.swift */,
 				EAD06C882B03481800F16B80 /* SceneDelegate.swift */,
 				EAD06C8A2B03481800F16B80 /* ViewController.swift */,
@@ -65,7 +74,6 @@
 				EAD06C8F2B03481A00F16B80 /* Assets.xcassets */,
 				EAD06C912B03481A00F16B80 /* LaunchScreen.storyboard */,
 				EAD06C942B03481A00F16B80 /* Info.plist */,
-				EA99A6832B04BB97001BDB4F /* Inter-Bold.ttf */,
 			);
 			path = "ios-Uikit";
 			sourceTree = "<group>";
@@ -128,9 +136,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA876EE32B0540BB00554794 /* Inter-VariableFont_slnt,wght.ttf in Resources */,
 				EAD06C932B03481A00F16B80 /* LaunchScreen.storyboard in Resources */,
 				EAD06C902B03481A00F16B80 /* Assets.xcassets in Resources */,
-				EA99A6842B04BB97001BDB4F /* Inter-Bold.ttf in Resources */,
 				EAD06C8E2B03481800F16B80 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
