@@ -14,6 +14,7 @@
 		EAD06C8E2B03481800F16B80 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAD06C8C2B03481800F16B80 /* Main.storyboard */; };
 		EAD06C902B03481A00F16B80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAD06C8F2B03481A00F16B80 /* Assets.xcassets */; };
 		EAD06C932B03481A00F16B80 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAD06C912B03481A00F16B80 /* LaunchScreen.storyboard */; };
+		EAD8F7602B05BF9400FD54DF /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD8F75F2B05BF9400FD54DF /* Color.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		EAD06C8F2B03481A00F16B80 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EAD06C922B03481A00F16B80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EAD06C942B03481A00F16B80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EAD8F75F2B05BF9400FD54DF /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				EAD06C862B03481800F16B80 /* AppDelegate.swift */,
 				EAD06C882B03481800F16B80 /* SceneDelegate.swift */,
 				EAD06C8A2B03481800F16B80 /* ViewController.swift */,
+				EAD8F75F2B05BF9400FD54DF /* Color.swift */,
 				EAD06C8C2B03481800F16B80 /* Main.storyboard */,
 				EAD06C8F2B03481A00F16B80 /* Assets.xcassets */,
 				EAD06C912B03481A00F16B80 /* LaunchScreen.storyboard */,
@@ -153,6 +156,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAD06C8B2B03481800F16B80 /* ViewController.swift in Sources */,
+				EAD8F7602B05BF9400FD54DF /* Color.swift in Sources */,
 				EAD06C872B03481800F16B80 /* AppDelegate.swift in Sources */,
 				EAD06C892B03481800F16B80 /* SceneDelegate.swift in Sources */,
 			);
