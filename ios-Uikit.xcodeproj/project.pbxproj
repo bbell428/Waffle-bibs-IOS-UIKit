@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EA65234C2B067FA900B29C86 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA65234B2B067FA900B29C86 /* HomeController.swift */; };
 		EA876EE32B0540BB00554794 /* Inter-VariableFont_slnt,wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA876EE22B0540BB00554794 /* Inter-VariableFont_slnt,wght.ttf */; };
+		EACC13F82B0656F900D57201 /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACC13F72B0656F900D57201 /* MyCollectionViewCell.swift */; };
+		EACC13FA2B06589B00D57201 /* productList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACC13F92B06589B00D57201 /* productList.swift */; };
 		EAD06C872B03481800F16B80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD06C862B03481800F16B80 /* AppDelegate.swift */; };
 		EAD06C892B03481800F16B80 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD06C882B03481800F16B80 /* SceneDelegate.swift */; };
 		EAD06C8B2B03481800F16B80 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD06C8A2B03481800F16B80 /* ViewController.swift */; };
@@ -18,8 +21,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EA65234B2B067FA900B29C86 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		EA876EE22B0540BB00554794 /* Inter-VariableFont_slnt,wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-VariableFont_slnt,wght.ttf"; sourceTree = "<group>"; };
 		EABC47572B05427200AD9317 /* Photo */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Photo; sourceTree = "<group>"; };
+		EACC13F72B0656F900D57201 /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
+		EACC13F92B06589B00D57201 /* productList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = productList.swift; sourceTree = "<group>"; };
 		EAD06C832B03481800F16B80 /* ios-Uikit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-Uikit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAD06C862B03481800F16B80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EAD06C882B03481800F16B80 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -74,11 +80,14 @@
 				EAD06C862B03481800F16B80 /* AppDelegate.swift */,
 				EAD06C882B03481800F16B80 /* SceneDelegate.swift */,
 				EAD06C8A2B03481800F16B80 /* ViewController.swift */,
-				EAD8F75F2B05BF9400FD54DF /* Color.swift */,
 				EAD06C8C2B03481800F16B80 /* Main.storyboard */,
+				EA65234B2B067FA900B29C86 /* HomeController.swift */,
+				EACC13F72B0656F900D57201 /* MyCollectionViewCell.swift */,
+				EACC13F92B06589B00D57201 /* productList.swift */,
 				EAD06C8F2B03481A00F16B80 /* Assets.xcassets */,
 				EAD06C912B03481A00F16B80 /* LaunchScreen.storyboard */,
 				EAD06C942B03481A00F16B80 /* Info.plist */,
+				EAD8F75F2B05BF9400FD54DF /* Color.swift */,
 			);
 			path = "ios-Uikit";
 			sourceTree = "<group>";
@@ -156,6 +165,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAD06C8B2B03481800F16B80 /* ViewController.swift in Sources */,
+				EACC13FA2B06589B00D57201 /* productList.swift in Sources */,
+				EA65234C2B067FA900B29C86 /* HomeController.swift in Sources */,
+				EACC13F82B0656F900D57201 /* MyCollectionViewCell.swift in Sources */,
 				EAD8F7602B05BF9400FD54DF /* Color.swift in Sources */,
 				EAD06C872B03481800F16B80 /* AppDelegate.swift in Sources */,
 				EAD06C892B03481800F16B80 /* SceneDelegate.swift in Sources */,
