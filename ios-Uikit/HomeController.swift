@@ -9,6 +9,8 @@ import UIKit
 
 class HomeController: UIViewController {
 
+    var sproduct:ProductList! = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
