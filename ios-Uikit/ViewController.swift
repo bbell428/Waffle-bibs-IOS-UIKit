@@ -1,6 +1,5 @@
 //  Created by 김종혁 on 11/14/23.
 //
-
 import UIKit
 
 class ViewController: UIViewController {
@@ -24,8 +23,9 @@ class ViewController: UIViewController {
         itemList.append(item3)
         
         
+        // MARK: - 폰트, 뒷배경
         myCollctionView.backgroundColor = UIColor(hexCode: "DADDEA") // 콜렉션 뷰 뒷 배경 색상
-        //폰트확인
+        
         for fontFamily in UIFont.familyNames {
             for fontName in UIFont.fontNames(forFamilyName: fontFamily) {
                 print(fontName)
@@ -34,7 +34,7 @@ class ViewController: UIViewController {
         
     }
 }
-
+// MARK: - CollectionView
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return itemList.count
@@ -53,12 +53,29 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         return cell
     }
     
+    // MARK: - Button
+    
+    // collectionView에서 button 누를 시 넘어가는 다음 ViewController
     @objc func viewdetail(sender:UIButton) {
         let indexPath1 = IndexPath(row: sender.tag, section: 0)
         let home = self.storyboard?.instantiateViewController(withIdentifier: "HomeController") as! HomeController
         home.sproduct = itemList[indexPath1.row]
         self.navigationController?.pushViewController(home, animated: true)
     }
-    
 }
 
+extension ViewController: UICollectionViewDelegateFlowLayout {
+    
+    // 섹션별로 셀의 inset을 지정하는 메서드
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        // UIEdgeInsets를 통해 위아래 마진을 설정
+        return UIEdgeInsets(top: 130, left: 40, bottom: 90, right: 40) // 여기서 10은 위아래 마진
+    }
+    
+    // 한 줄에 몇 개의 셀을 표시할지 결정하는 메서드
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        // 셀 간의 세로 간격을 설정
+        return 10 // 여기서 10은 위아래 마진
+    }
+    
+}
