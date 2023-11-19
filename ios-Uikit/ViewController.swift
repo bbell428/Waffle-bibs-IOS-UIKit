@@ -69,13 +69,13 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
     // 섹션별로 셀의 inset을 지정하는 메서드
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         // UIEdgeInsets를 통해 위아래 마진을 설정
-        return UIEdgeInsets(top: 130, left: 40, bottom: 90, right: 40) // 여기서 10은 위아래 마진
+        return UIEdgeInsets(top: 130, left: 38, bottom: 0, right: 38)
     }
     
     // 한 줄에 몇 개의 셀을 표시할지 결정하는 메서드
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         // 셀 간의 세로 간격을 설정
-        return 10 // 여기서 10은 위아래 마진
+        return 10
     }
     
 }
