@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		78C67AEB2B15961800A2DB69 /* CategoryExamVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C67AEA2B15961800A2DB69 /* CategoryExamVC.swift */; };
 		EA65234C2B067FA900B29C86 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA65234B2B067FA900B29C86 /* HomeController.swift */; };
 		EA876EE32B0540BB00554794 /* Inter-VariableFont_slnt,wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA876EE22B0540BB00554794 /* Inter-VariableFont_slnt,wght.ttf */; };
 		EACC13F82B0656F900D57201 /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACC13F72B0656F900D57201 /* MyCollectionViewCell.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		78C67AEA2B15961800A2DB69 /* CategoryExamVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryExamVC.swift; sourceTree = "<group>"; };
 		EA65234B2B067FA900B29C86 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		EA876EE22B0540BB00554794 /* Inter-VariableFont_slnt,wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-VariableFont_slnt,wght.ttf"; sourceTree = "<group>"; };
 		EABC47572B05427200AD9317 /* Photo */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Photo; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				EAD06C882B03481800F16B80 /* SceneDelegate.swift */,
 				EAD06C8A2B03481800F16B80 /* ViewController.swift */,
 				EAD06C8C2B03481800F16B80 /* Main.storyboard */,
+				78C67AEA2B15961800A2DB69 /* CategoryExamVC.swift */,
 				EA65234B2B067FA900B29C86 /* HomeController.swift */,
 				EACC13F72B0656F900D57201 /* MyCollectionViewCell.swift */,
 				EACC13F92B06589B00D57201 /* productList.swift */,
@@ -165,6 +168,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAD06C8B2B03481800F16B80 /* ViewController.swift in Sources */,
+				78C67AEB2B15961800A2DB69 /* CategoryExamVC.swift in Sources */,
 				EACC13FA2B06589B00D57201 /* productList.swift in Sources */,
 				EA65234C2B067FA900B29C86 /* HomeController.swift in Sources */,
 				EACC13F82B0656F900D57201 /* MyCollectionViewCell.swift in Sources */,
