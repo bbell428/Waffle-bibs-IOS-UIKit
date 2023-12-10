@@ -12,10 +12,8 @@ class HomeController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var tableView: UITableView!
     
     var sproduct:ProductList! = nil
+    var list: [String] = []  // 테이블 뷰에 표시할 데이터를 담을 배열
     
-    let list: [String] = [
-        "안녕", "나는", "김종혁"
-    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +21,18 @@ class HomeController: UIViewController, UITableViewDelegate, UITableViewDataSour
         //테이블뷰의 이벤트, 데이터소스 처리
         tableView.delegate = self
         tableView.dataSource = self
+        
+        // sproduct 또는 다른 식별자를 사용하여 표시할 데이터 결정
+        if let productName = sproduct?.productName {
+            switch productName {
+            case "WORK OUT":
+                list = ["운동 1", "운동 2", "운동 3"]
+            case "MEET":
+                list = ["미팅 1", "미팅 2", "미팅 3"]
+            default:
+                list = ["기본 데이터 1"]
+            }
+        }
     }
     
     //MARK: - 데이터소스
