@@ -9,7 +9,9 @@
 /* Begin PBXBuildFile section */
 		78C67AEB2B15961800A2DB69 /* CategoryExamVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C67AEA2B15961800A2DB69 /* CategoryExamVC.swift */; };
 		EA65234C2B067FA900B29C86 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA65234B2B067FA900B29C86 /* HomeController.swift */; };
+		EA7303192B1DAA6500BF03BF /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7303182B1DAA6500BF03BF /* ListTableViewCell.swift */; };
 		EA876EE32B0540BB00554794 /* Inter-VariableFont_slnt,wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA876EE22B0540BB00554794 /* Inter-VariableFont_slnt,wght.ttf */; };
+		EA93E5E02B1EF4930063974F /* ListCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA93E5DF2B1EF4930063974F /* ListCategory.swift */; };
 		EACC13F82B0656F900D57201 /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACC13F72B0656F900D57201 /* MyCollectionViewCell.swift */; };
 		EACC13FA2B06589B00D57201 /* productList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACC13F92B06589B00D57201 /* productList.swift */; };
 		EAD06C872B03481800F16B80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD06C862B03481800F16B80 /* AppDelegate.swift */; };
@@ -24,7 +26,9 @@
 /* Begin PBXFileReference section */
 		78C67AEA2B15961800A2DB69 /* CategoryExamVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryExamVC.swift; sourceTree = "<group>"; };
 		EA65234B2B067FA900B29C86 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		EA7303182B1DAA6500BF03BF /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		EA876EE22B0540BB00554794 /* Inter-VariableFont_slnt,wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-VariableFont_slnt,wght.ttf"; sourceTree = "<group>"; };
+		EA93E5DF2B1EF4930063974F /* ListCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCategory.swift; sourceTree = "<group>"; };
 		EABC47572B05427200AD9317 /* Photo */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Photo; sourceTree = "<group>"; };
 		EACC13F72B0656F900D57201 /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
 		EACC13F92B06589B00D57201 /* productList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = productList.swift; sourceTree = "<group>"; };
@@ -59,6 +63,14 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		EA93E5DE2B1ED11C0063974F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EA93E5DF2B1EF4930063974F /* ListCategory.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		EAD06C7A2B03481800F16B80 = {
 			isa = PBXGroup;
 			children = (
@@ -82,10 +94,12 @@
 				EAD06C862B03481800F16B80 /* AppDelegate.swift */,
 				EAD06C882B03481800F16B80 /* SceneDelegate.swift */,
 				EAD06C8A2B03481800F16B80 /* ViewController.swift */,
+				EACC13F72B0656F900D57201 /* MyCollectionViewCell.swift */,
+				EA93E5DE2B1ED11C0063974F /* Model */,
+				EA65234B2B067FA900B29C86 /* HomeController.swift */,
+				EA7303182B1DAA6500BF03BF /* ListTableViewCell.swift */,
 				EAD06C8C2B03481800F16B80 /* Main.storyboard */,
 				78C67AEA2B15961800A2DB69 /* CategoryExamVC.swift */,
-				EA65234B2B067FA900B29C86 /* HomeController.swift */,
-				EACC13F72B0656F900D57201 /* MyCollectionViewCell.swift */,
 				EACC13F92B06589B00D57201 /* productList.swift */,
 				EAD06C8F2B03481A00F16B80 /* Assets.xcassets */,
 				EAD06C912B03481A00F16B80 /* LaunchScreen.storyboard */,
@@ -172,6 +186,8 @@
 				EACC13FA2B06589B00D57201 /* productList.swift in Sources */,
 				EA65234C2B067FA900B29C86 /* HomeController.swift in Sources */,
 				EACC13F82B0656F900D57201 /* MyCollectionViewCell.swift in Sources */,
+				EA93E5E02B1EF4930063974F /* ListCategory.swift in Sources */,
+				EA7303192B1DAA6500BF03BF /* ListTableViewCell.swift in Sources */,
 				EAD8F7602B05BF9400FD54DF /* Color.swift in Sources */,
 				EAD06C872B03481800F16B80 /* AppDelegate.swift in Sources */,
 				EAD06C892B03481800F16B80 /* SceneDelegate.swift in Sources */,
