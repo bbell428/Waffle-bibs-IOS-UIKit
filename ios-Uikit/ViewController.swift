@@ -26,12 +26,13 @@ class ViewController: UIViewController {
         // MARK: - 폰트, 뒷배경
         myCollctionView.backgroundColor = UIColor(hexCode: "DADDEA") // 콜렉션 뷰 뒷 배경 색상
         
+        /*
         for fontFamily in UIFont.familyNames {
             for fontName in UIFont.fontNames(forFamilyName: fontFamily) {
                 print(fontName)
             }
         }
-        
+        */
     }
 }
 // MARK: - CollectionView
