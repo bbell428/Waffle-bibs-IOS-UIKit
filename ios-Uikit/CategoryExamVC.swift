@@ -37,7 +37,7 @@ class CategoryExamVC: UIViewController {
                 DispatchQueue.main.async { // 메인 스레드에서 UI 업데이트를 수행
                     // 데이터를 레이블에 할당
                     // 스웨거에서 아래 순서로 값을 지정햇기 때문에 2,3,0,1 순으로 값을 할당해야 순서가 나옵니다.
-                    // 원래는 이미지도 서버에서 뿌려주는게 좋지만 아직 와플이니까 흐린눈으로 넘어갑시다~
+                    // 원래는 이미지도 서버에서 뿌려주는게 좋지만 아직 와플이니까 흐린눈으로 넘어갑시다~ㅌ
                     self?.Category1.text = categories[2].title
                     self?.Category2.text = categories[3].title
                     self?.Category3.text = categories[0].title
