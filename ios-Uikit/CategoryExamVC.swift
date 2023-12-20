@@ -37,7 +37,7 @@ class CategoryExamVC: UIViewController {
                 DispatchQueue.main.async { // 메인 스레드에서 UI 업데이트를 수행
                     // 데이터를 레이블에 할당
                     // 스웨거에서 아래 순서로 값을 지정햇기 때문에 2,3,0,1 순으로 값을 할당해야 순서가 나옵니다.
-                    // 원래는 이미지도 서버에서 뿌려주는게 좋지만 아직 와플이니까 흐린눈으로 넘어갑시다~
+                    // 원래는 이미지도 서버에서 뿌려주는게 좋지만 아직 와플이니까 흐린눈으로 넘어갑시다~ㅌ
                     self?.Category1.text = categories[2].title
                     self?.Category2.text = categories[3].title
                     self?.Category3.text = categories[0].title
@@ -55,7 +55,11 @@ class CategoryExamVC: UIViewController {
 /// 스웨거의 ResponsBody 를 보고 작성하는데 스웨거에서 Int인지 String인지 등을 보면서 직접 작성해도 되지만 https://quicktype.io/ 에서 ResponsBody 를 긁어 넣고 구조체 이름만 지정해주고 설정만 하면 자동으로 해줍니다 그거 복붙해오면 됩니다.
 /// 그리고 보통은 ViewController 내부에 구조체를 작성하지 않고 Model 이라는 Group(폴더) 로 따로 정리해서 거기에 기능별 / 컴포넌트별로 구조체를 모아둡니다. 그렇게 모아둬서 나중에 MVC 혹은 MVVM등의 아키텍쳐로 발전시키는데 지금 단계에서는 그냥 따로 빼서 데이터 형식을 참조후 그 값을 가져올수 있구나 를 아시면 됩니다.
 struct Category: Codable {
-//    let id: Int
+//<<<<<<< HEAD
+//    //let id: Int
+//=======
+////    let id: Int
+//>>>>>>> Bbell
     let title: String
 }
 
