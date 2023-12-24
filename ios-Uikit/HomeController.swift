@@ -11,47 +11,53 @@ class HomeController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var TodoTitle: UILabel!
+    
     @IBOutlet weak var backBtn: UIImageView!
     
     @IBOutlet weak var deleteBtn: UIImageView!
     
     @IBOutlet weak var addBtn: UIImageView!
     
-    
-    
     var sproduct:ProductList! = nil
     var list: [String] = []  // 테이블 뷰에 표시할 데이터를 담을 배열
-    
+    var num: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchCategories() // 카테고리 정보를 서버에서 가져오도록 함
         
         //테이블뷰의 이벤트, 데이터소스 처리
         tableView.delegate = self
         tableView.dataSource = self
         
         // sproduct 또는 다른 식별자를 사용하여 표시할 데이터 결정
-//        if let productName = sproduct?.productName {
-//            switch productName {
-//            case "WORK OUT":
-//                list = ["운동 1", "운동 2", "운동 3"]
-//            case "MEET":
-//                list = ["미팅 1", "미팅 2", "미팅 3"]
-//            default:
-//                list = ["기본 데이터 1"]
-//            }
-//        }
+        // CollectionVioew에서 선택한 카테고리로 넘어올 때
+        if let productName = sproduct?.productName {
+            switch productName {
+            case "ASSIGNMENT":
+                num = 1
+            case "WORK OUT":
+                num = 2
+            case "DAILY":
+                num = 3
+            case "MEET":
+                num = 4
+            default:
+                print("해당 카테고리가 없습니다.")
+            }
+        }
+        fetchTodoList() // 카테고리 정보를 서버에서 가져오도록 함
         
+        //MARK: - 뒤로가기 버튼
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(backButtonTapped))
         backBtn.isUserInteractionEnabled = true // 사용자 인터랙션 활성화
         backBtn.addGestureRecognizer(tapGesture)
         
     }
     
-    //클로져 개념을 이해하셔야 코드 읽는데 무리가 없으실거에요
-    func fetchCategories() {
-        guard let url = URL(string: "http://158.179.166.114:8080/2/todo/") else { return }
+    //MARK: - JSON 데이터 파싱
+    func fetchTodoList() {
+        guard let url = URL(string: "http://158.179.166.114:8080/\(num)/todo/") else { return }
 
         let task = URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
             guard let data = data, error == nil else { return }
@@ -60,9 +66,19 @@ class HomeController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 let todoList = try JSONDecoder().decode([TodoListElement].self, from: data)
 
                 DispatchQueue.main.async {
-                    //TodoListElement에서 title을 가져와 list 배열에 저장
-                    self?.list = todoList.map { $0.contents }
-                
+                    //TodoListElement에서 title을 가져와 list 배열에 저장, id 값으로 오름차순
+                    // $0.contents 첫번째 매개변수
+                    self?.list = todoList.sorted { return $0.id < $1.id }.map { $0.contents }
+ 
+                    //배열의 첫 번째 요소를 옵셔널로 반환. 배열이 비어있으면 nil
+                    //first를 통해 반복되어 가져오는 타이틀이 아닌 1번만 가져옴
+                    if let selectTodo = todoList.first {
+                        self?.TodoTitle.text = selectTodo.categoryTitle
+                    } else {
+                        // todoList가 비어있을 때의 처리
+                        print("해당 카테고리가 없습니다.")
+                    }
+
                     self?.tableView.reloadData() // 테이블 뷰를 업데이트
                 }
             } catch {
@@ -88,16 +104,16 @@ class HomeController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "ListTableViewCell", for: indexPath) as! ListTableViewCell
         
         cell.todoList.text = list[indexPath.row]
-        cell.selectionStyle = .none
+//        cell.selectionStyle = .none
         return cell
     }
+    
     //MARK: - 테이블 뷰 마진
     // 셀의 높이값을 리턴
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
 }
-
 
 //MARK: - POST
 //    @objc func addButtonTapped() {
