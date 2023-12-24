@@ -48,6 +48,11 @@ class HomeController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         fetchTodoList() // 카테고리 정보를 서버에서 가져오도록 함
         
+        //MARK: - (+) 할일 추가
+        let addTapGesture = UITapGestureRecognizer(target: self, action: #selector(addButtonTapped))
+        addBtn.isUserInteractionEnabled = true
+        addBtn.addGestureRecognizer(addTapGesture)
+        
         //MARK: - 뒤로가기 버튼
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(backButtonTapped))
         backBtn.isUserInteractionEnabled = true // 사용자 인터랙션 활성화
@@ -93,6 +98,30 @@ class HomeController: UIViewController, UITableViewDelegate, UITableViewDataSour
            // 뒤로가기 버튼 액션 구현
            self.navigationController?.popViewController(animated: true)
        }
+    
+    //MARK: - 할 일 추가 버튼 액션 구현
+    @objc func addButtonTapped() {
+            let alertController = UIAlertController(title: "할 일 추가", message: "추가 하시겠습니까?", preferredStyle: .alert)
+
+            // Yes 액션 추가
+            let confirm = UIAlertAction(title: "Yes", style: .default) { action in
+                // Yes를 선택한 경우
+                self.showAddTodoAlert()  // 할 일을 추가하는 알림창을 띄우는 함수
+            }
+            // No 액션 추가
+            let cancel = UIAlertAction(title: "No", style: .cancel, handler: nil)
+            
+            alertController.addAction(confirm)
+            alertController.addAction(cancel)
+
+            // 알림창 표시
+            present(alertController, animated: true, completion: nil)
+        }
+
+        // Yes를 선택한 경우의 동작을 구현하는 함수
+        func showAddTodoAlert() {
+            // Yes를 선택한 경우의 동작을 구현
+        }
 
     //MARK: - 데이터소스
     //아이템 수 리턴
@@ -107,6 +136,7 @@ class HomeController: UIViewController, UITableViewDelegate, UITableViewDataSour
 //        cell.selectionStyle = .none
         return cell
     }
+    
     
     //MARK: - 테이블 뷰 마진
     // 셀의 높이값을 리턴
