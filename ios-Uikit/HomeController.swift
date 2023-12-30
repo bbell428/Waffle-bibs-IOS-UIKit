@@ -99,30 +99,6 @@ class HomeController: UIViewController, UITableViewDelegate, UITableViewDataSour
            self.navigationController?.popViewController(animated: true)
        }
     
-    //MARK: - 할 일 추가 버튼 액션 구현
-    @objc func addButtonTapped() {
-            let alertController = UIAlertController(title: "할 일 추가", message: "추가 하시겠습니까?", preferredStyle: .alert)
-
-            // Yes 액션 추가
-            let confirm = UIAlertAction(title: "Yes", style: .default) { action in
-                // Yes를 선택한 경우
-                self.showAddTodoAlert()  // 할 일을 추가하는 알림창을 띄우는 함수
-            }
-            // No 액션 추가
-            let cancel = UIAlertAction(title: "No", style: .cancel, handler: nil)
-            
-            alertController.addAction(confirm)
-            alertController.addAction(cancel)
-
-            // 알림창 표시
-            present(alertController, animated: true, completion: nil)
-        }
-
-        // Yes를 선택한 경우의 동작을 구현하는 함수
-        func showAddTodoAlert() {
-            // Yes를 선택한 경우의 동작을 구현
-        }
-
     //MARK: - 데이터소스
     //아이템 수 리턴
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -133,7 +109,7 @@ class HomeController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "ListTableViewCell", for: indexPath) as! ListTableViewCell
         
         cell.todoList.text = list[indexPath.row]
-//        cell.selectionStyle = .none
+        cell.selectionStyle = .none
         return cell
     }
     
@@ -143,49 +119,75 @@ class HomeController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
+    
+    //MARK: - 할 일 추가 버튼 액션 구현
+    @objc func addButtonTapped() {
+        let alertController = UIAlertController(title: "할 일 추가", message: "추가 하시겠습니까?", preferredStyle: .alert)
+
+        // 텍스트 필드 추가
+        alertController.addTextField { textField in
+            textField.placeholder = "할 일을 입력하세요"
+        }
+
+        // Yes 액션 추가
+        let confirm = UIAlertAction(title: "Yes", style: .default) { [weak self] action in
+            // Yes를 선택한 경우
+            if let textField = alertController.textFields?.first, let newTodo = textField.text {
+                self?.postTodo(with: newTodo)
+            }
+        }
+
+        // No 액션 추가
+        let cancel = UIAlertAction(title: "No", style: .cancel, handler: nil)
+
+        alertController.addAction(confirm)
+        alertController.addAction(cancel)
+
+        // 알림창 표시
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    //MARK: - POST
+    @objc func postTodo(with newTodo: String) {
+        // JSON 데이터 준비
+        let parameters: [String: Any] = [
+            "categoryTitle": "string",
+            "complete_chk": true,
+            "contents": newTodo,
+            "id": 0,
+            "startTime": "2023-12-20",
+            "title": "string"
+        ]
+
+        // URL 설정
+        guard let url = URL(string: "http://158.179.166.114:8080/2/todo/add") else { return }
+
+        // URLRequest 생성
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        // HTTP 바디 설정
+        request.httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: [])
+
+        // URLSession 요청
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                print("Error: \(error)")
+                return
+            }
+
+            guard let data = data else { return }
+            do {
+                // JSON 응답 처리
+                let json = try JSONSerialization.jsonObject(with: data, options: [])
+                print(json)
+            } catch {
+                print("Error parsing JSON: \(error)")
+            }
+        }.resume()
+    }
 }
-
-//MARK: - POST
-//    @objc func addButtonTapped() {
-//            // JSON 데이터 준비
-//            let parameters: [String: Any] = [
-//                "categoryTitle": "string",
-//                "complete_chk": true,
-//                "contents": "string",
-//                "id": 0,
-//                "startTime": "2023-12-20",
-//                "title": "string"
-//            ]
-//
-//            // URL 설정
-//            guard let url = URL(string: "http://158.179.166.114:8080/1/todo/add") else { return }
-//
-//            // URLRequest 생성
-//            var request = URLRequest(url: url)
-//            request.httpMethod = "POST"
-//            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-//
-//            // HTTP 바디 설정
-//            request.httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: [])
-//
-//            // URLSession 요청
-//            URLSession.shared.dataTask(with: request) { data, response, error in
-//                if let error = error {
-//                    print("Error: \(error)")
-//                    return
-//                }
-//
-//                guard let data = data else { return }
-//                do {
-//                    // JSON 응답 처리
-//                    let json = try JSONSerialization.jsonObject(with: data, options: [])
-//                    print(json)
-//                } catch {
-//                    print("Error parsing JSON: \(error)")
-//                }
-//            }.resume()
-//        }
-
 
 //MARK: - 서버에서 받는 데이터 형식을 나타내는 구조체
 struct TodoListElement: Codable {
