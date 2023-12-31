@@ -8,12 +8,14 @@
 import UIKit
 
 class ListTableViewCell: UITableViewCell {
-    @IBOutlet weak var todoList: UILabel!
+    @IBOutlet weak var TodoList: UITextField!
+    
+    @IBOutlet weak var TodoBack: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // 라벨 Corner Radius 설정
-        todoList.layer.cornerRadius = 4
-        todoList.layer.masksToBounds = true
+        TodoBack.layer.cornerRadius = 4
+        TodoBack.layer.masksToBounds = true
     }
 }
