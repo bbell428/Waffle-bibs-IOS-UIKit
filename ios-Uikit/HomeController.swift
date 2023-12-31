@@ -108,11 +108,10 @@ class HomeController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "ListTableViewCell", for: indexPath) as! ListTableViewCell
         
-        cell.todoList.text = list[indexPath.row]
+        cell.TodoList.text = list[indexPath.row]
         cell.selectionStyle = .none
         return cell
     }
-    
     
     //MARK: - 테이블 뷰 마진
     // 셀의 높이값을 리턴
@@ -129,6 +128,9 @@ class HomeController: UIViewController, UITableViewDelegate, UITableViewDataSour
             textField.placeholder = "할 일을 입력하세요"
         }
 
+        // No 액션 추가
+        let cancel = UIAlertAction(title: "No", style: .cancel, handler: nil)
+        
         // Yes 액션 추가
         let confirm = UIAlertAction(title: "Yes", style: .default) { [weak self] action in
             // Yes를 선택한 경우
@@ -137,12 +139,9 @@ class HomeController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         }
 
-        // No 액션 추가
-        let cancel = UIAlertAction(title: "No", style: .cancel, handler: nil)
-
-        alertController.addAction(confirm)
         alertController.addAction(cancel)
-
+        alertController.addAction(confirm)
+        
         // 알림창 표시
         present(alertController, animated: true, completion: nil)
     }
@@ -160,7 +159,7 @@ class HomeController: UIViewController, UITableViewDelegate, UITableViewDataSour
         ]
 
         // URL 설정
-        guard let url = URL(string: "http://158.179.166.114:8080/2/todo/add") else { return }
+        guard let url = URL(string: "http://158.179.166.114:8080/\(num)/todo/add") else { return }
 
         // URLRequest 생성
         var request = URLRequest(url: url)
