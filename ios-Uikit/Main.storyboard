@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KxK-sM-GSr">
+=======
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KxK-sM-GSr">
+>>>>>>> develop
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -223,7 +227,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="keU-MR-GlR"/>
                     <connections>
+<<<<<<< HEAD
                         <outlet property="TodoTitle" destination="1jk-9K-Atl" id="bbn-gY-M3C"/>
+=======
+>>>>>>> develop
                         <outlet property="addBtn" destination="YLG-5a-uhf" id="1wR-IT-cay"/>
                         <outlet property="backBtn" destination="Axt-jW-qKi" id="VmH-kc-Ek6"/>
                         <outlet property="deleteBtn" destination="oIt-eS-jkP" id="Rm8-LM-naY"/>

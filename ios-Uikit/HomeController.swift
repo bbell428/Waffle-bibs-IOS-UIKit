@@ -11,14 +11,22 @@ class HomeController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet weak var tableView: UITableView!
     
+<<<<<<< HEAD
     @IBOutlet weak var TodoTitle: UILabel!
     
+=======
+>>>>>>> develop
     @IBOutlet weak var backBtn: UIImageView!
     
     @IBOutlet weak var deleteBtn: UIImageView!
     
     @IBOutlet weak var addBtn: UIImageView!
     
+<<<<<<< HEAD
+=======
+    
+    
+>>>>>>> develop
     var sproduct:ProductList! = nil
     var list: [String] = []  // 테이블 뷰에 표시할 데이터를 담을 배열
     var num: Int = 0
@@ -29,7 +37,6 @@ class HomeController: UIViewController, UITableViewDelegate, UITableViewDataSour
         //테이블뷰의 이벤트, 데이터소스 처리
         tableView.delegate = self
         tableView.dataSource = self
-        
         // sproduct 또는 다른 식별자를 사용하여 표시할 데이터 결정
         // CollectionVioew에서 선택한 카테고리로 넘어올 때
         if let productName = sproduct?.productName {
@@ -46,6 +53,7 @@ class HomeController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 print("해당 카테고리가 없습니다.")
             }
         }
+<<<<<<< HEAD
         fetchTodoList() // 카테고리 정보를 서버에서 가져오도록 함
         
         //MARK: - (+) 할일 추가
@@ -54,12 +62,16 @@ class HomeController: UIViewController, UITableViewDelegate, UITableViewDataSour
         addBtn.addGestureRecognizer(addTapGesture)
         
         //MARK: - 뒤로가기 버튼
+=======
+        
+>>>>>>> develop
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(backButtonTapped))
         backBtn.isUserInteractionEnabled = true // 사용자 인터랙션 활성화
         backBtn.addGestureRecognizer(tapGesture)
         
     }
     
+<<<<<<< HEAD
     //MARK: - JSON 데이터 파싱
     func fetchTodoList() {
         guard let url = URL(string: "http://158.179.166.114:8080/\(num)/todo/") else { return }
@@ -94,10 +106,56 @@ class HomeController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     //MARK: - 뒤로가기 버튼 액션 구현
+=======
+>>>>>>> develop
     @objc func backButtonTapped() {
            // 뒤로가기 버튼 액션 구현
            self.navigationController?.popViewController(animated: true)
        }
+<<<<<<< HEAD
+=======
+
+    
+//    @objc func addButtonTapped() {
+//            // JSON 데이터 준비
+//            let parameters: [String: Any] = [
+//                "categoryTitle": "string",
+//                "complete_chk": true,
+//                "contents": "string",
+//                "id": 0,
+//                "startTime": "2023-12-20",
+//                "title": "string"
+//            ]
+//
+//            // URL 설정
+//            guard let url = URL(string: "http://158.179.166.114:8080/1/todo/add") else { return }
+//
+//            // URLRequest 생성
+//            var request = URLRequest(url: url)
+//            request.httpMethod = "POST"
+//            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+//
+//            // HTTP 바디 설정
+//            request.httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: [])
+//
+//            // URLSession 요청
+//            URLSession.shared.dataTask(with: request) { data, response, error in
+//                if let error = error {
+//                    print("Error: \(error)")
+//                    return
+//                }
+//
+//                guard let data = data else { return }
+//                do {
+//                    // JSON 응답 처리
+//                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+//                    print(json)
+//                } catch {
+//                    print("Error parsing JSON: \(error)")
+//                }
+//            }.resume()
+//        }
+>>>>>>> develop
     
     //MARK: - 데이터소스
     //아이템 수 리턴
