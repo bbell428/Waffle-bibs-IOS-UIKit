@@ -191,7 +191,8 @@ class HomeController: UIViewController, UITableViewDelegate, UITableViewDataSour
 //MARK: - 서버에서 받는 데이터 형식을 나타내는 구조체
 struct TodoListElement: Codable {
     let id: Int
-    let title, contents: String
+    let title: String?  // 옵셔널로 변경 -> 스웨거에서 title이 Null일 때 옵셔널 안하면 호출이 안됨
+    let contents: String
     let completeChk: Bool
     let startTime: [Int]
     let categoryTitle: String
