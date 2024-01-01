@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KxK-sM-GSr">
+=======
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KxK-sM-GSr">
+>>>>>>> develop
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
@@ -131,18 +135,25 @@
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="48"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="List" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EIN-sK-W2E">
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NSE-dt-AjI" userLabel="backColor">
                                                     <rect key="frame" x="36" y="0.0" width="320" height="48"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <subviews>
+                                                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="test" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LAN-zM-RY8">
+                                                            <rect key="frame" x="18" y="6" width="284" height="34"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="backgroundColor" red="0.85490196078431369" green="0.8666666666666667" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <textInputTraits key="textInputTraits"/>
+                                                        </textField>
+                                                    </subviews>
                                                     <color key="backgroundColor" red="0.85490196078431369" green="0.8666666666666667" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                </view>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="todoList" destination="EIN-sK-W2E" id="q8B-Cd-7Du"/>
+                                            <outlet property="TodoBack" destination="NSE-dt-AjI" id="sDM-Ws-UBu"/>
+                                            <outlet property="TodoList" destination="LAN-zM-RY8" id="Z5e-2X-VvL"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -216,6 +227,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="keU-MR-GlR"/>
                     <connections>
+<<<<<<< HEAD
+                        <outlet property="TodoTitle" destination="1jk-9K-Atl" id="bbn-gY-M3C"/>
+=======
+>>>>>>> develop
                         <outlet property="addBtn" destination="YLG-5a-uhf" id="1wR-IT-cay"/>
                         <outlet property="backBtn" destination="Axt-jW-qKi" id="VmH-kc-Ek6"/>
                         <outlet property="deleteBtn" destination="oIt-eS-jkP" id="Rm8-LM-naY"/>
