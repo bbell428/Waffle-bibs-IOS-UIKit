@@ -75,12 +75,12 @@ class HomeController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 let todoList = try JSONDecoder().decode([TodoListElement].self, from: data)
 
                 DispatchQueue.main.async {
-                    //TodoListElement에서 title을 가져와 list 배열에 저장, id 값으로 오름차순
-                    // $0.contents 첫번째 매개변수
-                    //self?.list = todoList.sorted { return $0.id < $1.id }.map { $0.contents }
+                    // self?.list = todoList.map{ $0.contents ?? "" }
                     
                     // 내용 출력
-                    self?.list = todoList.map{ $0.contents ?? "" }
+                    //TodoListElement에서 title을 가져와 list 배열에 저장, id 값으로 오름차순
+                    // $0.contents 첫번째 매개변수
+                    self?.list = todoList.sorted { return $0.id < $1.id }.map { $0.contents ?? "" }
  
                     //목록 넘어간 후, 리스트 화면에 목록 제목
                     self?.TodoTitle.text = self?.sproduct.productName
@@ -177,7 +177,7 @@ class HomeController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
 //MARK: - 서버에서 받는 데이터 형식을 나타내는 구조체
 struct TodoListElement: Codable {
-//    let id: Int
+    let id: Int
     let title: String?  // 옵셔널로 변경 -> 스웨거에서 title이 Null일 때 옵셔널 안하면 호출이 안됨
     let contents: String?
     let completeChk: Bool?
@@ -185,7 +185,7 @@ struct TodoListElement: Codable {
     let categoryTitle: String
 
     enum CodingKeys: String, CodingKey {
-        case title, contents
+        case id, title, contents
         case completeChk = "complete_chk"
         case startTime, categoryTitle
     }

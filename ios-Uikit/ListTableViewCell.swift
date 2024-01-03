@@ -31,7 +31,8 @@ class ListTableViewCell: UITableViewCell {
         // 라벨 Corner Radius 설정
         TodoBack.layer.cornerRadius = 4
         TodoBack.layer.masksToBounds = true
-        alpha0()
+        alpha0() // 안보이게 설정
+        TodoList.isEnabled = false // 텍스트 입력 안되게 설정
     }
 
     
@@ -51,6 +52,7 @@ class ListTableViewCell: UITableViewCell {
         postBackColor.alpha = 1
         postBtnImg.alpha = 1
         postBtn.alpha = 1
+        TodoList.isEnabled = true
     }
     func alpha0() {
         print("호출 성공")
@@ -59,6 +61,7 @@ class ListTableViewCell: UITableViewCell {
         postBackColor.alpha = 0
         postBtnImg.alpha = 0
         postBtn.alpha = 0
+        TodoList.isEnabled = false
     }
     
     //MARK: - POST
