@@ -3,4 +3,159 @@
    uuid = "FB1B25C6-38C5-4BBC-A023-C790DE33C015"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "516EDD68-B23F-4119-971A-E29A7562A4C5"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ios-Uikit/ListTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "ListTableViewCell"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "516EDD68-B23F-4119-971A-E29A7562A4C5 - 45337792d9d5d315"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ios_Uikit.ListTableViewCell.TodoBack.getter : Swift.Optional&lt;__C.UIView&gt;"
+                  moduleName = "ios-Uikit"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jonghyuk/Documents/Waffle-bibs-IOS-UIKit/ios-Uikit/ListTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "516EDD68-B23F-4119-971A-E29A7562A4C5 - 47c460dfc1b3bf19"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ios_Uikit.ListTableViewCell.TodoBack.setter : Swift.Optional&lt;__C.UIView&gt;"
+                  moduleName = "ios-Uikit"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jonghyuk/Documents/Waffle-bibs-IOS-UIKit/ios-Uikit/ListTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  uuid = "516EDD68-B23F-4119-971A-E29A7562A4C5 - 329c45c7b217ba39"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ios_Uikit.ListTableViewCell.TodoBack.modify : Swift.Optional&lt;__C.UIView&gt;"
+                  moduleName = "ios-Uikit"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jonghyuk/Documents/Waffle-bibs-IOS-UIKit/ios-Uikit/ListTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "516EDD68-B23F-4119-971A-E29A7562A4C5 - d563e550d2b2fd4a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ios_Uikit.ListTableViewCell.TodoBack.modify : Swift.Optional&lt;__C.UIView&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "ios-Uikit"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jonghyuk/Documents/Waffle-bibs-IOS-UIKit/%3Ccompiler-generated%3E"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "28">
+               </Location>
+               <Location
+                  uuid = "516EDD68-B23F-4119-971A-E29A7562A4C5 - 4d71f3b8c1b8f782"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ios_Uikit.ListTableViewCell.init(style: __C.UITableViewCellStyle, reuseIdentifier: Swift.Optional&lt;Swift.String&gt;) -&gt; ios_Uikit.ListTableViewCell"
+                  moduleName = "ios-Uikit"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jonghyuk/Documents/Waffle-bibs-IOS-UIKit/ios-Uikit/ListTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "208">
+               </Location>
+               <Location
+                  uuid = "516EDD68-B23F-4119-971A-E29A7562A4C5 - 55e04c8b9d1fc19e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ios_Uikit.ListTableViewCell.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;ios_Uikit.ListTableViewCell&gt;"
+                  moduleName = "ios-Uikit"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jonghyuk/Documents/Waffle-bibs-IOS-UIKit/ios-Uikit/ListTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "184">
+               </Location>
+               <Location
+                  uuid = "516EDD68-B23F-4119-971A-E29A7562A4C5 - 329c45c7b217ba18"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ios_Uikit.ListTableViewCell.TodoBack.modify : Swift.Optional&lt;__C.UIView&gt;"
+                  moduleName = "ios-Uikit"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jonghyuk/Documents/Waffle-bibs-IOS-UIKit/ios-Uikit/ListTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "516EDD68-B23F-4119-971A-E29A7562A4C5 - 4d71f3b8c1b8f7a3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ios_Uikit.ListTableViewCell.init(style: __C.UITableViewCellStyle, reuseIdentifier: Swift.Optional&lt;Swift.String&gt;) -&gt; ios_Uikit.ListTableViewCell"
+                  moduleName = "ios-Uikit"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jonghyuk/Documents/Waffle-bibs-IOS-UIKit/ios-Uikit/ListTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "208">
+               </Location>
+               <Location
+                  uuid = "516EDD68-B23F-4119-971A-E29A7562A4C5 - 55e04c8b9d1fc1bf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ios_Uikit.ListTableViewCell.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;ios_Uikit.ListTableViewCell&gt;"
+                  moduleName = "ios-Uikit"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jonghyuk/Documents/Waffle-bibs-IOS-UIKit/ios-Uikit/ListTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "184">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
