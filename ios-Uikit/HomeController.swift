@@ -15,13 +15,16 @@ class HomeController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet weak var backBtn: UIImageView!
     
-    @IBOutlet weak var deleteBtn: UIImageView!
-    
     @IBOutlet weak var addBtn: UIImageView!
+    
+    var selectedIndexPath: IndexPath?
+
+    //MARK: - 위에 Outlet
     
     var sproduct:ProductList! = nil
     var list: [String] = []  // 테이블 뷰에 표시할 데이터를 담을 배열
-    var num: Int = 0
+    var num: Int = 0 // 카테고리 선택 시 카테고리 주소번호
+    var num2: Int = 0 // 추가입력 누를 시 1, 추가입력 Back 버튼 누를 시 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +49,7 @@ class HomeController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 print("해당 카테고리가 없습니다.")
             }
         }
+        
         fetchTodoList() // 카테고리 정보를 서버에서 가져오도록 함
         
         //MARK: - (+) 할일 추가
@@ -73,16 +77,14 @@ class HomeController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 DispatchQueue.main.async {
                     //TodoListElement에서 title을 가져와 list 배열에 저장, id 값으로 오름차순
                     // $0.contents 첫번째 매개변수
-                    self?.list = todoList.sorted { return $0.id < $1.id }.map { $0.contents }
+                    //self?.list = todoList.sorted { return $0.id < $1.id }.map { $0.contents }
+                    
+                    // 내용 출력
+                    self?.list = todoList.map{ $0.contents ?? "" }
  
-                    //배열의 첫 번째 요소를 옵셔널로 반환. 배열이 비어있으면 nil
-                    //first를 통해 반복되어 가져오는 타이틀이 아닌 1번만 가져옴
-                    if let selectTodo = todoList.first {
-                        self?.TodoTitle.text = selectTodo.categoryTitle
-                    } else {
-                        // todoList가 비어있을 때의 처리
-                        print("해당 카테고리가 없습니다.")
-                    }
+                    //목록 넘어간 후, 리스트 화면에 목록 제목
+                    self?.TodoTitle.text = self?.sproduct.productName
+                
 
                     self?.tableView.reloadData() // 테이블 뷰를 업데이트
                 }
@@ -99,6 +101,53 @@ class HomeController: UIViewController, UITableViewDelegate, UITableViewDataSour
            self.navigationController?.popViewController(animated: true)
        }
     
+    
+    //MARK: - 할 일 추가 버튼 클릭 시 배열추가(list)
+    
+    var isListBackButtonEnabled: Bool = false // 할 일 추가 눌렀을 때만 활성화
+    
+    @objc func addButtonTapped() {
+        num2 = 1
+        // 새로운 할 일을 추가할 경우, 빈 문자열을 추가해 둠
+        if (num2 == 1) {
+            list.append("")
+
+            // 테이블 뷰의 마지막 섹션에 행을 추가
+            tableView.insertRows(at: [IndexPath(row: list.count - 1, section: 0)], with: .automatic)
+
+            // 테이블 뷰의 스크롤을 추가된 행으로 이동
+            tableView.scrollToRow(at: IndexPath(row: list.count - 1, section: 0), at: .bottom, animated: true)
+
+            if let cell = tableView.cellForRow(at: IndexPath(row: list.count - 1, section: 0)) as? ListTableViewCell {
+                // num2 값을 설정한 후에 이미지를 업데이트
+                cell.num2 = num2
+//                cell.updateListBackButtonAlpha()
+                print(cell.num2)
+            }
+
+            isListBackButtonEnabled = true
+        }
+    }
+
+
+    
+    //MARK: - ListBackButton, 추가 후 해당 배열 삭제
+    @IBAction func listBackButtonTapped(_ sender: Any) {
+        // 현재 화면에 표시된 셀 중에서 삭제하려는 셀을 찾기
+        if(isListBackButtonEnabled == true) {
+            if let visibleIndexPaths = tableView.indexPathsForVisibleRows,
+               let lastVisibleIndexPath = visibleIndexPaths.last {
+                // 배열에서 해당 행의 데이터를 제거
+                list.remove(at: lastVisibleIndexPath.row)
+
+                // 테이블 뷰에서도 해당 행을 삭제
+                tableView.deleteRows(at: [lastVisibleIndexPath], with: .automatic)
+            }
+        }
+        isListBackButtonEnabled = false
+        num2 = 0
+    }
+    
     //MARK: - 데이터소스
     //아이템 수 리턴
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -110,6 +159,11 @@ class HomeController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         cell.TodoList.text = list[indexPath.row]
         cell.selectionStyle = .none
+        
+        cell.num = num
+        cell.num2 = num2
+        
+        
         return cell
     }
     
@@ -119,86 +173,59 @@ class HomeController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return 80
     }
     
-    //MARK: - 할 일 추가 버튼 액션 구현
-    @objc func addButtonTapped() {
-        let alertController = UIAlertController(title: "할 일 추가", message: "추가 하시겠습니까?", preferredStyle: .alert)
-
-        // 텍스트 필드 추가
-        alertController.addTextField { textField in
-            textField.placeholder = "할 일을 입력하세요"
-        }
-
-        // No 액션 추가
-        let cancel = UIAlertAction(title: "No", style: .cancel, handler: nil)
-        
-        // Yes 액션 추가
-        let confirm = UIAlertAction(title: "Yes", style: .default) { [weak self] action in
-            // Yes를 선택한 경우
-            if let textField = alertController.textFields?.first, let newTodo = textField.text {
-                self?.postTodo(with: newTodo)
-            }
-        }
-
-        alertController.addAction(cancel)
-        alertController.addAction(confirm)
-        
-        // 알림창 표시
-        present(alertController, animated: true, completion: nil)
-    }
-    
     //MARK: - POST
-    @objc func postTodo(with newTodo: String) {
-        // JSON 데이터 준비
-        let parameters: [String: Any] = [
-            "categoryTitle": "string",
-            "complete_chk": true,
-            "contents": newTodo,
-            "id": 0,
-            "startTime": "2023-12-20",
-            "title": "string"
-        ]
-
-        // URL 설정
-        guard let url = URL(string: "http://158.179.166.114:8080/\(num)/todo/add") else { return }
-
-        // URLRequest 생성
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-
-        // HTTP 바디 설정
-        request.httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: [])
-
-        // URLSession 요청
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            if let error = error {
-                print("Error: \(error)")
-                return
-            }
-
-            guard let data = data else { return }
-            do {
-                // JSON 응답 처리
-                let json = try JSONSerialization.jsonObject(with: data, options: [])
-                print(json)
-            } catch {
-                print("Error parsing JSON: \(error)")
-            }
-        }.resume()
-    }
+//    @objc func postTodo(with newTodo: String) {
+//        // JSON 데이터 준비
+//        let parameters: [String: Any] = [
+//            "categoryTitle": "string",
+//            "complete_chk": true,
+//            "contents": newTodo,
+//            "id": 0,
+//            "startTime": "2023-12-20",
+//            "title": "string"
+//        ]
+//
+//        // URL 설정
+//        guard let url = URL(string: "http://158.179.166.114:8080/\(num)/todo/add") else { return }
+//
+//        // URLRequest 생성
+//        var request = URLRequest(url: url)
+//        request.httpMethod = "POST"
+//        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+//
+//        // HTTP 바디 설정
+//        request.httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: [])
+//
+//        // URLSession 요청
+//        URLSession.shared.dataTask(with: request) { data, response, error in
+//            if let error = error {
+//                print("Error: \(error)")
+//                return
+//            }
+//
+//            guard let data = data else { return }
+//            do {
+//                // JSON 응답 처리
+//                let json = try JSONSerialization.jsonObject(with: data, options: [])
+//                print(json)
+//            } catch {
+//                print("Error parsing JSON: \(error)")
+//            }
+//        }.resume()
+//    }
 }
 
 //MARK: - 서버에서 받는 데이터 형식을 나타내는 구조체
 struct TodoListElement: Codable {
-    let id: Int
+//    let id: Int
     let title: String?  // 옵셔널로 변경 -> 스웨거에서 title이 Null일 때 옵셔널 안하면 호출이 안됨
-    let contents: String
-    let completeChk: Bool
-    let startTime: [Int]
+    let contents: String?
+    let completeChk: Bool?
+    let startTime: [Int]?
     let categoryTitle: String
 
     enum CodingKeys: String, CodingKey {
-        case id, title, contents
+        case title, contents
         case completeChk = "complete_chk"
         case startTime, categoryTitle
     }
