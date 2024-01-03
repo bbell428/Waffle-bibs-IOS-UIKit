@@ -26,6 +26,8 @@ class HomeController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var num: Int = 0 // 카테고리 선택 시 카테고리 주소번호
     var num2: Int = 0 // 추가입력 누를 시 1, 추가입력 Back 버튼 누를 시 0
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -158,13 +160,16 @@ class HomeController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.num = num
         cell.num2 = num2
         
+        cell.onPostSuccess = { [weak self] in
+            self?.fetchTodoList()
+        }
         // ListTableViewCell에 있는 함수 호출, 추가 버튼 누르기 전 alpha = 0, 누른 후 alpha = 1 ( 마지막 생성된 배열에만 )
+        
             if indexPath.row == list.count - 1 && num2 == 1 {
                 cell.alpha1()
             } else {
                 cell.alpha0()
             }
-        
         return cell
     }
     
