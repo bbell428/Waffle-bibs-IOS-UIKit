@@ -11,6 +11,7 @@ class ListTableViewCell: UITableViewCell {
     
     var num: Int = 0
     var num2: Int = 0
+    var test: Int = 123
     
     @IBOutlet weak var TodoList: UITextField!
     
@@ -18,32 +19,46 @@ class ListTableViewCell: UITableViewCell {
     
     @IBOutlet weak var ListBackBtn: UIImageView!
         
+    @IBOutlet weak var listBackButtonTapped: UIButton!
+    
+    @IBOutlet weak var postBackColor: UIImageView!
+    @IBOutlet weak var postBtnImg: UIImageView!
+    @IBOutlet weak var postBtn: UIButton!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // 라벨 Corner Radius 설정
         TodoBack.layer.cornerRadius = 4
         TodoBack.layer.masksToBounds = true
-        
+        alpha0()
     }
 
     
     @IBAction func postBtn(_ sender: Any) {
-        print(num, num2)
-        func updateListBackButtonAlpha() {
-            if(num2 == 1) {
-                ListBackBtn.alpha = 1
-            } else {
-                ListBackBtn.alpha = 0
-            }
-    //        ListBackBtn.alpha = num2 == 1 ? false : true
-            // num2가 1이면 이미지를 표시, 아니면 숨김
-        }
-        if(num2 == 1) {
+        if num2 == 1 {
             if let newTodo = TodoList.text {
-                postTodo(with: newTodo) // 버튼 클릭시 POST 전달
+                postTodo(with: newTodo) // 버튼 클릭으로 POST 요청
                 num2 = 0
             }
         }
+    }
+
+    func alpha1() {
+        print("호출 성공")
+        ListBackBtn.alpha = 1
+        listBackButtonTapped.alpha = 1
+        postBackColor.alpha = 1
+        postBtnImg.alpha = 1
+        postBtn.alpha = 1
+    }
+    func alpha0() {
+        print("호출 성공")
+        ListBackBtn.alpha = 0
+        listBackButtonTapped.alpha = 0
+        postBackColor.alpha = 0
+        postBtnImg.alpha = 0
+        postBtn.alpha = 0
     }
     
     //MARK: - POST

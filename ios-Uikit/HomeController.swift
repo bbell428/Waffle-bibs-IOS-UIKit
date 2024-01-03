@@ -107,7 +107,8 @@ class HomeController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var isListBackButtonEnabled: Bool = false // 할 일 추가 눌렀을 때만 활성화
     
     @objc func addButtonTapped() {
-        num2 = 1
+        print("추가 버튼이 탭되었습니다.")
+        num2 += 1
         // 새로운 할 일을 추가할 경우, 빈 문자열을 추가해 둠
         if (num2 == 1) {
             list.append("")
@@ -117,14 +118,8 @@ class HomeController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
             // 테이블 뷰의 스크롤을 추가된 행으로 이동
             tableView.scrollToRow(at: IndexPath(row: list.count - 1, section: 0), at: .bottom, animated: true)
-
-            if let cell = tableView.cellForRow(at: IndexPath(row: list.count - 1, section: 0)) as? ListTableViewCell {
-                // num2 값을 설정한 후에 이미지를 업데이트
-                cell.num2 = num2
-//                cell.updateListBackButtonAlpha()
-                print(cell.num2)
-            }
-
+            
+            
             isListBackButtonEnabled = true
         }
     }
@@ -163,6 +158,12 @@ class HomeController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.num = num
         cell.num2 = num2
         
+        // ListTableViewCell에 있는 함수 호출, 추가 버튼 누르기 전 alpha = 0, 누른 후 alpha = 1 ( 마지막 생성된 배열에만 )
+            if indexPath.row == list.count - 1 && num2 == 1 {
+                cell.alpha1()
+            } else {
+                cell.alpha0()
+            }
         
         return cell
     }
@@ -172,47 +173,6 @@ class HomeController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
-    
-    //MARK: - POST
-//    @objc func postTodo(with newTodo: String) {
-//        // JSON 데이터 준비
-//        let parameters: [String: Any] = [
-//            "categoryTitle": "string",
-//            "complete_chk": true,
-//            "contents": newTodo,
-//            "id": 0,
-//            "startTime": "2023-12-20",
-//            "title": "string"
-//        ]
-//
-//        // URL 설정
-//        guard let url = URL(string: "http://158.179.166.114:8080/\(num)/todo/add") else { return }
-//
-//        // URLRequest 생성
-//        var request = URLRequest(url: url)
-//        request.httpMethod = "POST"
-//        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-//
-//        // HTTP 바디 설정
-//        request.httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: [])
-//
-//        // URLSession 요청
-//        URLSession.shared.dataTask(with: request) { data, response, error in
-//            if let error = error {
-//                print("Error: \(error)")
-//                return
-//            }
-//
-//            guard let data = data else { return }
-//            do {
-//                // JSON 응답 처리
-//                let json = try JSONSerialization.jsonObject(with: data, options: [])
-//                print(json)
-//            } catch {
-//                print("Error parsing JSON: \(error)")
-//            }
-//        }.resume()
-//    }
 }
 
 //MARK: - 서버에서 받는 데이터 형식을 나타내는 구조체
