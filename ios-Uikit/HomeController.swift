@@ -18,11 +18,12 @@ class HomeController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var addBtn: UIImageView!
     
     var selectedIndexPath: IndexPath?
-
+    
     //MARK: - 위에 Outlet
     
     var sproduct:ProductList! = nil
     var list: [String] = []  // 테이블 뷰에 표시할 데이터를 담을 배열
+    var list2: [Int] = [] // id 값 저장
     var num: Int = 0 // 카테고리 선택 시 카테고리 주소번호
     var num2: Int = 0 // 추가입력 누를 시 1, 추가입력 Back 버튼 누를 시 0
     
@@ -69,13 +70,13 @@ class HomeController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //MARK: - JSON 데이터 파싱
     func fetchTodoList() {
         guard let url = URL(string: "http://158.179.166.114:8080/\(num)/todo/") else { return }
-
+        
         let task = URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
             guard let data = data, error == nil else { return }
-
+            
             do {
                 let todoList = try JSONDecoder().decode([TodoListElement].self, from: data)
-
+                
                 DispatchQueue.main.async {
                     // self?.list = todoList.map{ $0.contents ?? "" }
                     
@@ -83,11 +84,12 @@ class HomeController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     //TodoListElement에서 title을 가져와 list 배열에 저장, id 값으로 오름차순
                     // $0.contents 첫번째 매개변수
                     self?.list = todoList.sorted { return $0.id < $1.id }.map { $0.contents ?? "" }
- 
+                    self?.list2 = todoList.sorted { return $0.id < $1.id }.map { $0.id } // 순서대로 id 배열
+                    
                     //목록 넘어간 후, 리스트 화면에 목록 제목
                     self?.TodoTitle.text = self?.sproduct.productName
-                
-
+                    
+                    
                     self?.tableView.reloadData() // 테이블 뷰를 업데이트
                 }
             } catch {
@@ -99,9 +101,9 @@ class HomeController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     //MARK: - 뒤로가기 버튼 액션 구현
     @objc func backButtonTapped() {
-           // 뒤로가기 버튼 액션 구현
-           self.navigationController?.popViewController(animated: true)
-       }
+        // 뒤로가기 버튼 액션 구현
+        self.navigationController?.popViewController(animated: true)
+    }
     
     
     //MARK: - 할 일 추가 버튼 클릭 시 배열추가(list)
@@ -114,10 +116,10 @@ class HomeController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // 새로운 할 일을 추가할 경우, 빈 문자열을 추가해 둠
         if (num2 == 1) {
             list.append("")
-
+            
             // 테이블 뷰의 마지막 섹션에 행을 추가
             tableView.insertRows(at: [IndexPath(row: list.count - 1, section: 0)], with: .automatic)
-
+            
             // 테이블 뷰의 스크롤을 추가된 행으로 이동
             tableView.scrollToRow(at: IndexPath(row: list.count - 1, section: 0), at: .bottom, animated: true)
             
@@ -125,8 +127,8 @@ class HomeController: UIViewController, UITableViewDelegate, UITableViewDataSour
             isListBackButtonEnabled = true
         }
     }
-
-
+    
+    
     
     //MARK: - ListBackButton, 추가 후 해당 배열 삭제
     @IBAction func listBackButtonTapped(_ sender: Any) {
@@ -136,7 +138,7 @@ class HomeController: UIViewController, UITableViewDelegate, UITableViewDataSour
                let lastVisibleIndexPath = visibleIndexPaths.last {
                 // 배열에서 해당 행의 데이터를 제거
                 list.remove(at: lastVisibleIndexPath.row)
-
+                
                 // 테이블 뷰에서도 해당 행을 삭제
                 tableView.deleteRows(at: [lastVisibleIndexPath], with: .automatic)
             }
@@ -165,12 +167,59 @@ class HomeController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         // ListTableViewCell에 있는 함수 호출, 추가 버튼 누르기 전 alpha = 0, 누른 후 alpha = 1 ( 마지막 생성된 배열에만 )
         
-            if indexPath.row == list.count - 1 && num2 == 1 {
-                cell.alpha1()
-            } else {
-                cell.alpha0()
-            }
+        if indexPath.row == list.count - 1 && num2 == 1 {
+            cell.alpha1()
+        } else {
+            cell.alpha0()
+        }
         return cell
+    }
+    
+    //MARK: - swipe (슬라이드 삭제)
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let delete = UIContextualAction(style: .destructive, title: "Delete") { _, _, _ in
+            print("Delete button Tapped")
+            
+            self.deleteTodoItem(id: self.list2[indexPath.row]) // 선택된 id를 삭제
+//            print(self.list2[indexPath.row])
+            
+            tableView.beginUpdates()
+            self.list.remove(at: indexPath.row)
+            self.list2.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.endUpdates()
+        }
+        let swipe = UISwipeActionsConfiguration(actions: [delete])
+        return swipe
+    }
+    //MARK: - Delete HTTP 요청
+    
+    func deleteTodoItem(id: Int) {
+        // DELETE 요청을 보낼 URL
+        let url = URL(string: "http://158.179.166.114:8080/todo/\(id)")!
+        
+        // URLRequest 생성
+        var request = URLRequest(url: url)
+        request.httpMethod = "DELETE"
+        
+        /*
+         GET: 리소스를 가져오기 위해 사용됨.
+         POST: 새로운 리소스를 생성하기 위해 사용됨.
+         PUT 또는 PATCH: 기존 리소스를 업데이트하기 위해 사용됨.
+         DELETE: 리소스를 삭제하기 위해 사용됨.
+         */
+        
+        // URLSession을 사용하여 요청 보내기
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                print("Error: \(error)")
+                // 에러 처리 로직 추가
+            } else if let httpResponse = response as? HTTPURLResponse {
+                print("Status Code: \(httpResponse.statusCode)") // 200이 뜨면 성공
+                // 일반적으로 성공(200 성공, 201 작성됨)이나 실패(404 찾을 수 없음, 500 내부 서버 오류 등)
+            }
+        }
+        task.resume()
     }
     
     //MARK: - 테이블 뷰 마진
@@ -188,7 +237,7 @@ struct TodoListElement: Codable {
     let completeChk: Bool?
     let startTime: [Int]?
     let categoryTitle: String
-
+    
     enum CodingKeys: String, CodingKey {
         case id, title, contents
         case completeChk = "complete_chk"
