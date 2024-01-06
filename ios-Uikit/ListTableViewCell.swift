@@ -15,7 +15,6 @@ class ListTableViewCell: UITableViewCell {
     
     var onPostSuccess: (() -> Void)?
     
-    
     @IBOutlet weak var TodoList: UITextField!
     
     @IBOutlet weak var TodoBack: UIView!
@@ -37,7 +36,6 @@ class ListTableViewCell: UITableViewCell {
         alpha0() // 안보이게 설정
         TodoList.isEnabled = false // 텍스트 입력 안되게 설정
     }
-    
     
     @IBAction func postBtn(_ sender: Any) {
         if num2 == 1 {
@@ -106,20 +104,20 @@ class ListTableViewCell: UITableViewCell {
                     print("success")
                     self.onPostSuccess?()
                 }
-    
-//                guard let data = data else { return }
-//                do {
-//                    // JSON 응답 처리
-//                    let json = try JSONSerialization.jsonObject(with: data, options: [])
-//                    print(json)
-//                } catch {
-//                    print("Error parsing JSON: \(error)")
-//                }
-            }
-        
                 
-            }.resume()
+                //                guard let data = data else { return }
+                //                do {
+                //                    // JSON 응답 처리
+                //                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+                //                    print(json)
+                //                } catch {
+                //                    print("Error parsing JSON: \(error)")
+                //                }
+            }
             
-        }
+            
+        }.resume()
+        
+    }
     
 }
