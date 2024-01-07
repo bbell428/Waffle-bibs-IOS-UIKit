@@ -11,7 +11,6 @@ class ListTableViewCell: UITableViewCell {
     
     var num: Int = 0
     var num2: Int = 0
-    var test: Int = 123
     
     var onPostSuccess: (() -> Void)?
     
@@ -104,15 +103,7 @@ class ListTableViewCell: UITableViewCell {
                     print("success")
                     self.onPostSuccess?()
                 }
-                
-                //                guard let data = data else { return }
-                //                do {
-                //                    // JSON 응답 처리
-                //                    let json = try JSONSerialization.jsonObject(with: data, options: [])
-                //                    print(json)
-                //                } catch {
-                //                    print("Error parsing JSON: \(error)")
-                //                }
+            
             }
             
             

@@ -12,6 +12,3 @@ struct ProductList {
     let productImage: UIImage
     let productName: String
 }
-
-//무시해주세요
-
