@@ -11,6 +11,7 @@ class ListTableViewCell: UITableViewCell {
     
     var num: Int = 0
     var num2: Int = 0
+    var test: Int = 123
     
     var onPostSuccess: (() -> Void)?
     
@@ -103,10 +104,7 @@ class ListTableViewCell: UITableViewCell {
                     print("success")
                     self.onPostSuccess?()
                 }
-            
             }
-            
-            
         }.resume()
         
     }

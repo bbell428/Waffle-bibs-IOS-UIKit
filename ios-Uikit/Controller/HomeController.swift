@@ -225,8 +225,13 @@ class HomeController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //MARK: - 테이블 뷰 마진
     // 셀의 높이값을 리턴
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        let cellHeight: CGFloat = 50
+        let bottomPadding: CGFloat = 20
+        
+        return cellHeight + bottomPadding
     }
+
+
 }
 
 //MARK: - 서버에서 받는 데이터 형식을 나타내는 구조체
