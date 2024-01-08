@@ -104,18 +104,7 @@ class ListTableViewCell: UITableViewCell {
                     print("success")
                     self.onPostSuccess?()
                 }
-                
-                //                guard let data = data else { return }
-                //                do {
-                //                    // JSON 응답 처리
-                //                    let json = try JSONSerialization.jsonObject(with: data, options: [])
-                //                    print(json)
-                //                } catch {
-                //                    print("Error parsing JSON: \(error)")
-                //                }
             }
-            
-            
         }.resume()
         
     }
