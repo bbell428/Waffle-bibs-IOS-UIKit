@@ -40,10 +40,8 @@ class ListTableViewCell: UITableViewCell {
     @IBAction func postBtn(_ sender: Any) {
         if num2 == 1 {
             if let newTodo = TodoList.text {
-                
-                postTodo(with: newTodo) // 버튼 클릭으로 POST 요청
+                postTodo(with: newTodo) // POST request with button click
                 num2 = 0
-                
             }
         }
     }
@@ -143,7 +141,6 @@ class ListTableViewCell: UITableViewCell {
             } else if let httpResponse = response as? HTTPURLResponse {
                 // 서버 응답 처리
                 print("상태 코드: \(httpResponse.statusCode)")
-                // 여기에서 필요한 경우 응답에 대한 추가 처리를 수행할 수 있습니다.
             }
         }
 
