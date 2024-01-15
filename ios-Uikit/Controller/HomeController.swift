@@ -31,7 +31,9 @@ class HomeController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+//        let config = URLSessionConfiguration.default
+//        config.timeoutIntervalForRequest = 30 // 30초로 설정
+//        let session = URLSession(configuration: config)
         //테이블뷰의 이벤트, 데이터소스 처리
         tableView.delegate = self
         tableView.dataSource = self
@@ -174,14 +176,65 @@ class HomeController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         return cell
     }
-    
+    //MARK: - 할 일 수정
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if(num2 == 0) {
+            // 선택된 셀이 ListTableViewCell 형식인지 확인
+            if let cell = tableView.cellForRow(at: indexPath) as? ListTableViewCell {
+                // 선택된 셀의 내용을 가져
+                let selectedContent = list[indexPath.row]
+                
+                // 셀 선택 스타일을 설정
+                cell.selectionStyle = .none
+                
+                // 수정 여부를 묻는 알림창을 생성
+                let confirmAlert = UIAlertController(title: "할 일 수정", message: "수정하시겠습니까?", preferredStyle: .alert)
+                
+                // '예'가 선택된 경우
+                confirmAlert.addAction(UIAlertAction(title: "예", style: .default) { _ in
+                    // 새로운 내용을 입력하는 알림창을 생성
+                    let updateAlert = UIAlertController(title: "수정", message: "새로운 내용을 입력하세요", preferredStyle: .alert)
+                    
+                    // 기존 내용을 입력하는 텍스트 필드를 추가하고, 기존 내용으로 초기화
+                    updateAlert.addTextField { textField in
+                        textField.text = selectedContent
+                    }
+                    
+                    // '확인'이 선택된 경우
+                    updateAlert.addAction(UIAlertAction(title: "확인", style: .default) { [weak self] _ in
+                        // 새로운 내용을 가져옵니다.
+                        if let updatedText = updateAlert.textFields?.first?.text {
+                            // 리스트의 두 번째 배열에서 해당하는 ID
+                            let id = self?.list2[indexPath.row] ?? 0
+                            // 수정된 내용으로 데이터 소스 업데이트
+                            self?.list[indexPath.row] = updatedText
+                            // 테이블 뷰에서 해당하는 행 다시로드
+                            tableView.reloadRows(at: [indexPath], with: .none)
+                            // ListTableViewCell 클래스의 updateContent 함수를 호출하여 내용을 수정
+                            cell.updateContent(id: id, updatedText: updatedText)
+                        }
+                    })
+                    
+                    // 수정 알림창을 표시합니다.
+                    self.present(updateAlert, animated: true, completion: nil)
+                })
+                
+                // '아니오'가 선택된 경우
+                confirmAlert.addAction(UIAlertAction(title: "아니오", style: .cancel, handler: nil))
+                
+                // 수정 여부 알림창을 표시합니다.
+                self.present(confirmAlert, animated: true, completion: nil)
+            }
+        }
+    }
+
     //MARK: - swipe (슬라이드 삭제)
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let delete = UIContextualAction(style: .destructive, title: "Delete") { _, _, _ in
             print("Delete button Tapped")
             
             self.deleteTodoItem(id: self.list2[indexPath.row]) // 선택된 id를 삭제
-//            print(self.list2[indexPath.row])
+            //            print(self.list2[indexPath.row])
             
             tableView.beginUpdates()
             self.list.remove(at: indexPath.row)
@@ -230,8 +283,8 @@ class HomeController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         return cellHeight + bottomPadding
     }
-
-
+    
+    
 }
 
 //MARK: - 서버에서 받는 데이터 형식을 나타내는 구조체
